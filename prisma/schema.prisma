@@ -1,0 +1,44 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Note that some adapters may set a maximum length for the String type by default, please ensure your strings are long
+// enough when changing adapters.
+// See https://www.prisma.io/docs/orm/reference/prisma-schema-reference#string for more information
+datasource db {
+  provider = "sqlite"
+  url      = "file:dev.sqlite"
+}
+
+model Session {
+  id            String    @id
+  shop          String
+  state         String
+  isOnline      Boolean   @default(false)
+  scope         String?
+  expires       DateTime?
+  accessToken   String
+  userId        BigInt?
+  firstName     String?
+  lastName      String?
+  email         String?
+  accountOwner  Boolean   @default(false)
+  locale        String?
+  collaborator  Boolean?  @default(false)
+  emailVerified Boolean?  @default(false)
+}
+model Review {
+  id          String   @id @default(uuid()) // Unique identifier for the review
+  shopDomain  String
+  productId   String   // Reference to the product being reviewed
+  userName    String
+  userEmail     String?  // Optional: Reference to the user submitting the review (can be null for guest reviews)
+  rating      Float    // The rating given by the user (e.g., 4.3)
+  comment     String?  // Optional: The review comment
+  createdAt   DateTime @default(now()) // Timestamp when the review was created
+  updatedAt   DateTime @updatedAt // Timestamp when the review was last updated
+  isPublic    Boolean  @default(true) // Indicates if the review is publicly visible  
+}
