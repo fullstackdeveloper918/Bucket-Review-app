@@ -9,6 +9,8 @@ import {
     Layout,
     BlockStack,
     Tabs,
+    Box,
+    Card,
   } from '@shopify/polaris';
   import {useState, useCallback} from 'react';
   import {ChevronLeftIcon} from '@shopify/polaris-icons';
@@ -16,7 +18,18 @@ import {
 import thumb from "./assets/reunion.png";
 import keep from "./assets/Subtract.png";
 import hotspot from "./assets/Vector.png";
-import "./assets/reviewwdit.css"
+import product_image from "./assets/pro_img.jpg"
+import "./assets/reviewwdit.css";
+import {
+  ChoiceList,
+  TextField,
+  RangeSlider,
+  LegacyCard,
+  ResourceList,
+  LegacyFilters,
+  Avatar,
+  Text,
+} from '@shopify/polaris';
   export default  function Reviewedit() {
     const [isFullscreen, setFullscreen] = useState(true);
     const [expanded, setExpanded] = useState(true);
@@ -83,7 +96,30 @@ import "./assets/reviewwdit.css"
           panelID: 'accepts-marketing-content-1',
         },
       ];
-  
+
+
+   // Content for each tab
+   const tabContent = [
+    [
+      { product_title: "Necklace 14K", product_image: product_image ,},
+      { rating_image:product_image ,rating:"3" ,rating_description: "Lorem ipsum dolor sit amet, consectetur adipiscing...", },
+      { rating_image:product_image ,rating:"4" ,rating_description: "Lorem ipsum dolor sit amet, consectetur adipiscing...", },
+      { rating_image:product_image ,rating:"1" ,rating_description: "Lorem ipsum dolor sit amet, consectetur adipiscing...", },
+      { rating_image:product_image ,rating:"3" ,rating_description: "Lorem ipsum dolor sit amet, consectetur adipiscing...", },
+      { rating_image:product_image ,rating:"4" ,rating_description: "Lorem ipsum dolor sit amet, consectetur adipiscing...", },
+      { rating_image:product_image ,rating:"1" ,rating_description: "Lorem ipsum dolor sit amet, consectetur adipiscing...", },
+      { rating_image:product_image ,rating:"3" ,rating_description: "Lorem ipsum dolor sit amet, consectetur adipiscing...", },
+      { rating_image:product_image ,rating:"4" ,rating_description: "Lorem ipsum dolor sit amet, consectetur adipiscing...", },
+      { rating_image:product_image ,rating:"1" ,rating_description: "Lorem ipsum dolor sit amet, consectetur adipiscing...", },
+      { rating_image:product_image ,rating:"3" ,rating_description: "Lorem ipsum dolor sit amet, consectetur adipiscing...", },
+      { rating_image:product_image ,rating:"4" ,rating_description: "Lorem ipsum dolor sit amet, consectetur adipiscing...", },
+      { rating_image:product_image ,rating:"1" ,rating_description: "Lorem ipsum dolor sit amet, consectetur adipiscing...", }
+    ],
+    [
+      { title: "Sales", description: "Sticky Add to Cart", url: "#" },
+    ]
+   
+  ];
     return (
       <div style={{height: '250px', width: '100%'}}>
         {isFullscreen && fullscreenBarMarkup}
@@ -149,9 +185,55 @@ import "./assets/reviewwdit.css"
                     <Layout.Section>
                         <BlockStack gap="300">
                         <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange}>
-                            <LegacyCard.Section title={tabs[selected].content}>
-                                <p>Tab {selected} selected</p>
-                            </LegacyCard.Section>
+                        <Card>
+                        {tabContent[selected] && tabContent[selected].map((block, index) => (
+                                  
+                                     
+                                     <Box key={index} padding="4" border="1px solid #ddd" borderRadius="8px">
+                                     <div class="product_infor">
+                                     <img src={block.product_image}/>
+                                    
+                                    <Text as="h3">{block.product_title}</Text>
+
+                                     </div>
+                                     
+                                    
+                                    </Box>
+                                  
+                                  
+                              ))}
+                              <div className='main_Product_rating'>
+                                      
+                                      <div className='table_content'>
+                                        <table className='table_rating'>
+                                          <tr><th>Rating Image</th>
+                                           <th>Rating</th>
+                                        
+                                           <th>Comment</th>
+                                          </tr>
+                                          {tabContent[selected] && tabContent[selected].map((block, index) => (
+                                          <tr>
+                                            <td>
+                                             <img src= {block.rating_image}/>
+                                            </td>
+                                            <td>
+                                            {block.rating}
+                                            </td>
+                                            <td>
+                                            {block.rating_description}
+                                            </td>
+                                          </tr>
+                                             
+                              ))}
+                                        </table>
+
+                                      
+
+                                      </div>
+                                  
+                                   </div>
+                                   
+                              </Card>
                             </Tabs>
                         </BlockStack>
                     </Layout.Section>
