@@ -1,0 +1,136 @@
+<style>
+ .subheading_bundle {
+
+display: flex;
+justify-content: center;
+}
+
+.heading_bundle {
+display: flex;
+justify-content: center;
+}
+
+.discount_main {
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 6rem;
+}
+
+
+.contents{
+  max-width: 400px;
+  padding: 0 40px;
+  margin: 0 auto;
+}
+
+.accordion-single  {
+  border-bottom: 1px solid #efefef;
+  margin-top: 10px;
+}
+
+.accordion-single-title {
+  padding: 20px;
+  cursor: pointer;
+  position: relative;
+  font-size: 20px;
+  margin: 0;
+}
+
+.accordion-single-title::after{
+  content: "";
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  transition: all 0.2s ease-in-out;
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-top: solid 2px #999;
+  border-right: solid 2px #999;
+  transform: translateY(-50%) rotate(135deg);
+}
+
+.accordion-single-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease-in-out;
+}
+
+.accordion-single-content p {
+  padding: 20px;
+}
+
+.accordion-single-item.is-open .accordion-single-content  {
+  max-height: 150px;
+}
+
+.accordion-single-item.is-open .accordion-single-title::after  {
+  transform: translateY(-50%) rotate(315deg);
+}
+</style>
+<div class="Discount discount_main">
+    <div class="child_Discount">
+        <div class="subheading_bundle">
+            <p> Limited Time Offer</p>
+        </div>
+        <div class="heading_bundle">
+            <h2>Add Bundle And Save 10%!</h2>
+        </div>
+        </div>
+        <div class="contents">
+
+
+  
+</div>
+
+</div>
+<!-- acc single -->
+<div class="accordion-single js-acc-single">
+  <div class="accordion-single-item js-acc-item">
+    <h2 class="accordion-single-title js-acc-single-trigger">Question 1</h2>
+    <div class="accordion-single-content">
+      <p>This is an Answer 1</p>
+    </div>
+  </div>
+  <div class="accordion-single-item js-acc-item">
+    <h2 class="accordion-single-title js-acc-single-trigger">Question 2</h2>
+    <div class="accordion-single-content">
+      <p>This is an Answer 2</p>
+    </div>
+  </div>
+  <div class="accordion-single-item js-acc-item">
+    <h2 class="accordion-single-title js-acc-single-trigger">Question 3</h2>
+    <div class="accordion-single-content">
+      <p>This is an Answer 3</p>
+    </div>
+  </div>
+</div><!-- accordion-single -->
+<script>
+const accSingleTriggers = document.querySelectorAll('.js-acc-single-trigger');
+
+accSingleTriggers.forEach(trigger => trigger.addEventListener('click', toggleAccordion));
+
+function toggleAccordion() {
+  const items = document.querySelectorAll('.js-acc-item');
+  const thisItem = this.parentNode;
+
+  items.forEach(item => {
+    if (thisItem == item) {
+      thisItem.classList.toggle('is-open');
+      return;
+    }
+    item.classList.remove('is-open');
+  });
+}
+
+</script>
+{% schema %}
+    {
+    "name": "Discount",
+    "target": "section",
+    "settings": [
+    
+    ]
+    }
+    {% endschema %}

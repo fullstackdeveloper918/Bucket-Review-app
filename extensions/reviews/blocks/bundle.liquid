@@ -1,0 +1,476 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    div,
+    button,
+    span {
+        font-family: "Poppins", sans-serif;
+        ;
+    }
+
+    .dropdown {
+        width: 100%;
+        font-weight: 300;
+    }
+
+    .dropdown__switch {
+        position: absolute;
+        visibility: hidden;
+    }
+
+    .dropdown__options-filter2 {
+        width: 100%;
+        font-weight: 300;
+    }
+
+    .dropdown__switch2 {
+        position: absolute;
+        visibility: hidden;
+    }
+    .dropdown__switch:checked+.dropdown__options-filter .dropdown__select {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+
+    .dropdown__options-filter {
+        width: 100%;
+        cursor: pointer;
+    }
+    .dropdown__switch2:checked+.dropdown__options-filter2 .dropdown__select2 {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+
+    .dropdown__options-filter2 {
+        width: 100%;
+        cursor: pointer;
+    }
+
+
+    .dropdown__filter {
+    position: relative;
+    display: flex;
+    padding: 10px;
+    color: #fff;
+    background-color: #8b8686;
+    border-radius: 18px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+.dropdown__filter2 {
+    position: relative;
+    display: flex;
+    padding: 10px;
+    color: #fff;
+    background-color: #8b8686;
+    border-radius: 18px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+.dropdown__select {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    margin-top: 5px;
+    overflow: hidden;
+    transform: scaleY(0);
+    transform-origin: top;
+    /* border-radius: 18px; */
+    padding: 0;
+    opacity: 0;
+    transition: 0.2s ease-in-out;
+}
+.dropdown__select-option {
+    /* padding: 20px; */
+    background-color: #EAEAEA;
+    transition: 0.3s;
+}
+.dropdown__select2 {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    margin-top: 5px;
+    overflow: hidden;
+    transform: scaleY(0);
+    transform-origin: top;
+    /* border-radius: 18px; */
+    padding: 0;
+    opacity: 0;
+    transition: 0.2s ease-in-out;
+}
+.dropdown__select-option2 {
+    /* padding: 20px; */
+    background-color: #EAEAEA
+    transition: 0.3s;
+}
+    /* .dropdown__select-option:hover {
+        background-color: #e9ecef;
+    } */
+
+    .bundle_main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .subheading_bundle {
+
+        display: flex;
+        justify-content: center;
+    }
+
+    .heading_bundle {
+        display: flex;
+        justify-content: center;
+    }
+
+    .bundle_main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 6rem;
+    }
+
+    .subheading_bundle p {
+        border: 1px solid black;
+        padding: 1rem;
+        border-radius: 13px;
+    }
+    .total_csrt {
+    display: flex;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.bundle_price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bundle_price .pro_price.linethoorgh {
+    text-decoration: line-through;
+    text-decoration-color: red;
+}
+
+.product_mainc img {
+    height: 20rem;
+}
+.add_cart_btn {
+    background: #000;
+    color: #fff;
+    justify-content: center;
+    text-align: center;
+    padding: 11px;
+    font-size: 16px;
+}
+.add_cart_btn + p {
+    text-align: center;
+}
+.add_cart_btn {
+    background: #000;
+    color: #fff;
+    justify-content: center;
+    text-align: center;
+    padding: 11px;
+    font-size: 16px;
+    border-radius: 14px;
+}
+
+.add_cart_btn + p {
+    text-align: center;
+}
+
+.bundle_child {
+    display: flex;
+    margin: 2rem;
+}
+
+.product_block {
+    margin: 1rem;
+}
+
+.dropdown__options-filter ul.dropdown__filter {
+    list-style: none;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.dropdown__options-filter2 ul.dropdown__filter2 {
+    list-style: none;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+/* .product_mainc img {
+    height: 100% !important;
+    width: 100% !important;
+} */
+.bundleplus {
+    padding-top: 50px;
+}
+.save_block {
+    height: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+}
+</style>
+<div class="bundle_main">
+
+    <div class="child_bundle">
+        <div class="subheading_bundle">
+            <p> Limited Time Offer</p>
+        </div>
+        <div class="heading_bundle">
+            <h2>Add Bundle And Save 10%!</h2>
+        </div>
+        <div class="for_mobile" style="display: none;">
+            <div class="bundle_child">
+                <div class="product_block">
+                    <div class="product_mainc" product="{{product.id}}">
+                        <img src="{{ "product.png" | asset_img_url :"600"}}">
+        
+                    </div>
+        
+                    <div class="dropdown">
+                        <input type="checkbox" class="dropdown__switch" id="filter-switch" hidden />
+                        <label for="filter-switch" class="dropdown__options-filter">
+                            <ul class="dropdown__filter" role="listbox" tabindex="-1">
+                                <li class="dropdown__filter-selected" aria-selected="true">
+                                    Default option
+                                </li>
+                                <li>
+                                    <ul class="dropdown__select">
+                                        <li class="dropdown__select-option" role="option">
+                                            Option 1
+                                        </li>
+                                        <li class="dropdown__select-option" role="option">
+                                            Option 2
+                                        </li>
+                                        <li class="dropdown__select-option" role="option">
+                                            Option 3
+                                        </li>
+                                        <li class="dropdown__select-option" role="option">
+                                            Option 4
+                                        </li>
+                                        <li class="dropdown__select-option" role="option">
+                                            Option 5
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </label>
+                    </div>
+                </div>
+              <div class="bundleplus"> +</div>
+                {% comment %} {% endcomment %}
+                <div class="product_block">
+                    <div class="product_mainc" product="{{product.id}}">
+                        <img src="{{ "product2.png" | asset_img_url :"600"}}">
+                    </div>
+        
+                    <div class="dropdown2">
+                        <input type="checkbox" class="dropdown__switch2" id="filter-switch2" hidden />
+                        <label for="filter-switch2" class="dropdown__options-filter2">
+                            <ul class="dropdown__filter2" role="listbox" tabindex="-1">
+                                <li class="dropdown__filter-selected2" aria-selected="true">
+                                    Default option
+                                </li>
+                                <li>
+                                    <ul class="dropdown__select2">
+                                        <li class="dropdown__select-option2" role="option">
+                                            Option 1
+                                        </li>
+                                        <li class="dropdown__select-option2" role="option">
+                                            Option 2
+                                        </li>
+                                        <li class="dropdown__select-option2" role="option">
+                                            Option 3
+                                        </li>
+                                        <li class="dropdown__select-option2" role="option">
+                                            Option 4
+                                        </li>
+                                        <li class="dropdown__select-option2" role="option">
+                                            Option 5
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="price_block">
+            <div class="total_csrt">
+                <span>Total</span>
+
+            </div>
+            <div class="bundle_price">
+                <div class="pro_price linethoorgh">
+                    <h3> 124$</h3>
+                </div>
+                <div class="pro_price noneline">
+                    <h3>114$</h3>
+                </div>
+                <div class="save_block" style="background:#000; color:#fff;">
+                    Save 10%
+                </div>
+            </div>
+            <div class="add_cart_btn">
+                <a> 👉 Add To Cart</a>
+            </div>
+            <p>Lifetime Warranty & Free Returns </p>
+        </div>
+    </div>
+    <div class="bundle_child">
+        <div class="product_block">
+            <div class="product_mainc" product="{{product.id}}">
+                <img src="{{ "product.png" | asset_img_url :"600"}}">
+
+            </div>
+
+            <div class="dropdown">
+                <input type="checkbox" class="dropdown__switch" id="filter-switch" hidden />
+                <label for="filter-switch" class="dropdown__options-filter">
+                    <ul class="dropdown__filter" role="listbox" tabindex="-1">
+                        <li class="dropdown__filter-selected" aria-selected="true">
+                            Default option
+                        </li>
+                        <li>
+                            <ul class="dropdown__select">
+                                <li class="dropdown__select-option" role="option">
+                                    Option 1
+                                </li>
+                                <li class="dropdown__select-option" role="option">
+                                    Option 2
+                                </li>
+                                <li class="dropdown__select-option" role="option">
+                                    Option 3
+                                </li>
+                                <li class="dropdown__select-option" role="option">
+                                    Option 4
+                                </li>
+                                <li class="dropdown__select-option" role="option">
+                                    Option 5
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </label>
+            </div>
+        </div>
+      <div class="bundleplus"> +</div>
+        {% comment %} {% endcomment %}
+        <div class="product_block">
+            <div class="product_mainc" product="{{product.id}}">
+                <img src="{{ "product2.png" | asset_img_url :"600"}}">
+            </div>
+
+            <div class="dropdown2">
+                <input type="checkbox" class="dropdown__switch2" id="filter-switch2" hidden />
+                <label for="filter-switch2" class="dropdown__options-filter2">
+                    <ul class="dropdown__filter2" role="listbox" tabindex="-1">
+                        <li class="dropdown__filter-selected2" aria-selected="true">
+                            Default option
+                        </li>
+                        <li>
+                            <ul class="dropdown__select2">
+                                <li class="dropdown__select-option2" role="option">
+                                    Option 1
+                                </li>
+                                <li class="dropdown__select-option2" role="option">
+                                    Option 2
+                                </li>
+                                <li class="dropdown__select-option2" role="option">
+                                    Option 3
+                                </li>
+                                <li class="dropdown__select-option2" role="option">
+                                    Option 4
+                                </li>
+                                <li class="dropdown__select-option2" role="option">
+                                    Option 5
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </label>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+ // Change option selected for first dropdown
+const label = document.querySelector('.dropdown__filter-selected');
+const options = Array.from(document.querySelectorAll('.dropdown__select-option'));
+
+options.forEach((option) => {
+    option.addEventListener('click', () => {
+        label.textContent = option.textContent;
+        // Close the dropdown after selection
+        document.querySelector('.dropdown__switch').checked = false;
+    });
+});
+
+// Change option selected for second dropdown
+const label2 = document.querySelector('.dropdown__filter-selected2');
+const options2 = Array.from(document.querySelectorAll('.dropdown__select-option2'));
+
+options2.forEach((option) => {
+    option.addEventListener('click', () => {
+        label2.textContent = option.textContent;
+        // Close the dropdown after selection
+        document.querySelector('.dropdown__switch2').checked = false;
+    });
+});
+
+// Close dropdown onclick outside (for the first dropdown)
+document.addEventListener('click', (e) => {
+    const toggle = document.querySelector('.dropdown__switch');
+    const element = e.target;
+
+    if (element === toggle) return;
+
+    const isDropdownChild = element.closest('.dropdown__filter');
+    if (!isDropdownChild) {
+        toggle.checked = false;  // Close the first dropdown
+    }
+});
+
+// Close dropdown onclick outside (for the second dropdown)
+document.addEventListener('click', (e) => {
+ 
+    const toggle2 = document.querySelector('.dropdown__switch2');
+    const element = e.target;
+
+    if (element === toggle2) return;
+
+    const isDropdownChild2 = element.closest('.dropdown__filter2');
+    if (!isDropdownChild2) {
+        toggle2.checked = false;  // Close the second dropdown
+    }
+});
+
+</script>
+{% schema %}
+{
+"name": "Bundle",
+"target": "section",
+"settings": [
+
+]
+}
+{% endschema %}

@@ -1,0 +1,7 @@
+.bundle_subheaindg {
+    display: flex;
+    justify-content: space-between;
+}
+.bundle_block {
+    margin: 0px 20px;
+}
