@@ -35,10 +35,21 @@ model Review {
   shopDomain  String
   productId   String   // Reference to the product being reviewed
   userName    String
-  userEmail     String?  // Optional: Reference to the user submitting the review (can be null for guest reviews)
+  userEmail   String?  // Optional: Reference to the user submitting the review (can be null for guest reviews)
   rating      Float    // The rating given by the user (e.g., 4.3)
   comment     String?  // Optional: The review comment
   createdAt   DateTime @default(now()) // Timestamp when the review was created
   updatedAt   DateTime @updatedAt // Timestamp when the review was last updated
   isPublic    Boolean  @default(true) // Indicates if the review is publicly visible  
+  images      Images[] // A review can have many images (array of Images)
+}
+
+model Images {
+  id        Int      @id @default(autoincrement())
+  reviewId  String   // Foreign key to the Review model
+  url       String?  // The URL of the image
+  createdAt DateTime @default(now()) // Timestamp when the image was created
+  deletedAt DateTime? // Timestamp when the image was deleted (optional)
+
+  review    Review   @relation(fields: [reviewId], references: [id]) // Relationship with the Review model
 }

@@ -1,0 +1,9 @@
+-- CreateTable
+CREATE TABLE "Images" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "reviewId" TEXT NOT NULL,
+    "url" TEXT,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "deletedAt" DATETIME,
+    CONSTRAINT "Images_reviewId_fkey" FOREIGN KEY ("reviewId") REFERENCES "Review" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
